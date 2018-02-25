@@ -1,0 +1,45 @@
+﻿@using TiendaWeb.Models;
+@{
+    Layout = null;
+    List<Producto> productos = ViewBag.resultadoParaLaVista;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div> 
+        Hola estos son los productos
+    </div>
+    <br />
+    <br />
+    <a href="/Producto/FormularioNuevo">Ingresar Nuevo Producto</a>
+    <br />
+    <br />
+    <table border="1">
+        <tr>
+            <td>Id</td>
+            <td>Referencia</td>
+            <td>Precio</td>
+            <td colspan="2">Opciones</td>
+
+        </tr>
+
+        @foreach (Producto xxx in productos)
+        {
+            <tr>
+                <td>@xxx.Id</td>
+                <td>@xxx.Referencia</td>
+                <td>@xxx.Precio</td>  
+                <td><a href="/Producto/FormularioUpdate?id=@xxx.Id">Update</a></td>
+                <td><a href="/Producto/Borrar?id=@xxx.Id">Delete</a></td>            
+            </tr>
+        }
+    </table>
+
+</body>
+</html>
